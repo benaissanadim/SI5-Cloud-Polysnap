@@ -1,0 +1,431 @@
+swagger: '2.0'
+info:
+  title: Polysnap API
+  description: Sample API on API Gateway with an App Engine backend
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+host: "polysnap-gateway-1i6xp2f783nz2.apigateway.cloud-final-402019.cloud.goog"
+x-google-endpoints:
+  - name: "polysnap-gateway-1i6xp2f783nz2.apigateway.cloud-final-402019.cloud.goog"
+    allowCors: True
+
+
+paths:
+
+  /story:
+    get:
+      summary: manage stories
+      operationId: get stories
+      x-google-backend:
+        address: https://stories-dot-cloud-final-402019.oa.r.appspot.com/story
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+    post:
+      summary: Create a story
+      operationId: createStory
+      x-google-backend:
+        address: https://stories-dot-cloud-final-402019.oa.r.appspot.com/story
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+  /story/search:
+      get:
+        summary: Search stories
+        operationId: searchStories
+        x-google-backend:
+          address: https://stories-dot-cloud-final-402019.oa.r.appspot.com/story/search
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string
+
+  /story/remove-expired:
+      post:
+        summary: Remove expired stories
+        operationId: removeExpiredStories
+        x-google-backend:
+          address: https://stories-dot-cloud-final-402019.oa.r.appspot.com/story/remove-expired
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string
+
+  /story/empty-db:
+      post:
+        summary: Empty stories DB
+        operationId: emptyStoriesDB
+        x-google-backend:
+          address: https://stories-dot-cloud-final-402019.oa.r.appspot.com/story/empty-db
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string
+
+
+  /story/save:
+      post:
+        summary: Save a story
+        operationId: saveStory
+        x-google-backend:
+          address: https://stories-dot-cloud-final-402019.oa.r.appspot.com/story/save
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string
+
+  /story/all:
+      get:
+        summary: Get all stories
+        operationId: getAllStories
+        x-google-backend:
+          address: https://stories-dot-cloud-final-402019.oa.r.appspot.com/story/all
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string
+
+  /story/contact/{userId}:
+    get:
+      summary: Get contact stories of a user
+      operationId: getContactStoryOfUser
+      parameters:
+        - name: userId
+          in: path
+          type: integer
+          required: true
+      x-google-backend:
+        address: https://stories-dot-cloud-final-402019.oa.r.appspot.com
+        path_translation: APPEND_PATH_TO_ADDRESS
+
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+  /storage/uploadUrl:
+    get:
+      summary: Get upload URL
+      operationId: getStoryUploadUrl
+      x-google-backend:
+        address: https://stories-dot-cloud-final-402019.oa.r.appspot.com/storage/uploadUrl
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+  /storage/download:
+    get:
+      summary: Download a file
+      operationId: download
+      x-google-backend:
+        address: https://stories-dot-cloud-final-402019.oa.r.appspot.com/storage/download
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /users:
+    get:
+      summary: manage users
+      operationId: users
+      x-google-backend:
+        address: https://users-dot-cloud-final-402019.oa.r.appspot.com/users
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+  /users/search:
+    get:
+      summary: Search users
+      operationId: searchUsers
+      x-google-backend:
+        address: https://users-dot-cloud-final-402019.oa.r.appspot.com/users/search
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+  /users/contacts:
+    get:
+      summary: Get contacts of a user
+      operationId: getContactsOfUser
+      x-google-backend:
+        address: https://users-dot-cloud-final-402019.oa.r.appspot.com/users/contacts
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+    patch:
+      summary: Add a contact
+      operationId: addContact
+      x-google-backend:
+        address: https://users-dot-cloud-final-402019.oa.r.appspot.com/users/contacts
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+  /users/lookup:
+    get:
+      summary: Look up a user
+      operationId: lookUpUser
+      x-google-backend:
+        address: https://users-dot-cloud-final-402019.oa.r.appspot.com/users/lookup
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+  /users/signup:
+    post:
+      summary: Sign up a user
+      operationId: signUp
+      x-google-backend:
+        address: https://users-dot-cloud-final-402019.oa.r.appspot.com/users/signup
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+
+
+  /messagereader/messages:
+    get:
+      summary: manage reading messages
+      operationId: getmessagereader
+      x-google-backend:
+        address: https://messagereader-dot-cloud-final-402019.oa.r.appspot.com/messages
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /messagereader/messages/all:
+      get:
+        summary: Get all messages
+        operationId: getAllMessages
+        x-google-backend:
+          address: https://messagereader-dot-cloud-final-402019.oa.r.appspot.com/messages/all
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string
+
+      delete:
+        summary: Delete all messages
+        operationId: deleteAllMessages
+        x-google-backend:
+          address: https://messagereader-dot-cloud-final-402019.oa.r.appspot.com/messages/all
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string
+
+  /messagesCleanUp:
+      post:
+        summary: Cleanup messages
+        operationId: cleanupMessages
+        x-google-backend:
+          address: https://messagereader-dot-cloud-final-402019.oa.r.appspot.com/messagesCleanUp
+        responses:
+          '200':
+            description: A successful response
+            schema:
+              type: string
+
+  /messagesender:
+    get:
+      summary: manage sending messages
+      operationId: messagesender
+      x-google-backend:
+        address: https://messagesender-dot-cloud-final-402019.oa.r.appspot.com
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+  /chats:
+    get:
+      summary: Get all chats
+      operationId: findAllChats
+      x-google-backend:
+        address: https://messagesender-dot-cloud-final-402019.oa.r.appspot.com/chats
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: array
+
+    post:
+      summary: Create a new chat
+      operationId: addChat
+      x-google-backend:
+        address: https://messagesender-dot-cloud-final-402019.oa.r.appspot.com/chats
+      responses:
+        '200':
+          description: A successful response
+
+    delete:
+      summary: Delete all chats
+      operationId: deleteAllChats
+      x-google-backend:
+        address: https://messagesender-dot-cloud-final-402019.oa.r.appspot.com/chats
+      responses:
+        '200':
+          description: A successful response
+
+  /chats/{id}:
+    get:
+      summary: Get a chat by ID
+      operationId: findChat
+      x-google-backend:
+        address: https://messagesender-dot-cloud-final-402019.oa.r.appspot.com
+        path_translation: APPEND_PATH_TO_ADDRESS
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: A successful response
+
+    delete:
+      summary: Delete a chat by ID
+      operationId: deleteChatById
+      x-google-backend:
+        address: https://messagesender-dot-cloud-final-402019.oa.r.appspot.com
+        path_translation: APPEND_PATH_TO_ADDRESS
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: A successful response
+
+  /messagesender/messages:
+    post:
+      summary: Create a new message
+      operationId: createMessage
+      x-google-backend:
+        address: https://messagesender-dot-cloud-final-402019.oa.r.appspot.com/messages
+      responses:
+        '200':
+          description: Message published
+
+  /messagesender/messages/redis:
+    get:
+      summary: Get all elements from Redis
+      operationId: getAllElementsFromRedis
+      x-google-backend:
+        address: https://messagesender-dot-cloud-final-402019.oa.r.appspot.com/messages/redis
+      responses:
+        '200':
+          description: A successful response
+
+  /messagesender/messages/test:
+    post:
+      summary: Test
+      operationId: test
+      x-google-backend:
+        address: https://messagesender-dot-cloud-final-402019.oa.r.appspot.com/messages/test
+      responses:
+        '200':
+          description: A successful response
+
+  /messagestore:
+    get:
+      summary: manage storing messages
+      operationId: messagestore
+      x-google-backend:
+        address: https://messagestore-dot-cloud-final-402019.oa.r.appspot.com
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+  /messagestore/messages:
+    post:
+      summary: Subscribe to a topic
+      operationId: subscribeToTopic
+      x-google-backend:
+        address: https://messagestore-dot-cloud-final-402019.oa.r.appspot.com/messages
+      responses:
+        '200':
+          description: Subscribed to topic
+    get:
+      summary: Get all messages
+      operationId: getALL
+      x-google-backend:
+        address: https://messagestore-dot-cloud-final-402019.oa.r.appspot.com/messages
+      responses:
+        '200':
+          description: A successful response
+
+  /media:
+    get:
+      summary: Health check for the Media Service
+      operationId: healthCheck
+      x-google-backend:
+        address: https://media-service-dot-cloud-final-402019.oa.r.appspot.com/media
+      responses:
+        '200':
+          description: Media Service is up and running
+          schema:
+            type: string
+
+  /media/generate-upload-url:
+    post:
+      summary: Generate an upload URL for media
+      operationId: getUploadUrl
+      x-google-backend:
+        address: https://media-service-dot-cloud-final-402019.oa.r.appspot.com/media/generate-upload-url
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+  /media/check-existence:
+    post:
+      summary: Check if media exists
+      operationId: checkExistence
+      x-google-backend:
+        address: https://media-service-dot-cloud-final-402019.oa.r.appspot.com/media/check-existence
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: boolean
+
+

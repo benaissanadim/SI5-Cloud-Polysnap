@@ -1,0 +1,4 @@
+indexes:
+- kind: chat
+  properties:
+  - name: name

@@ -1,0 +1,47 @@
+name: Deploy to Google Cloud
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+ 
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+     contents: 'read'
+     id-token: 'write'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+        
+ 
+
+    - name: Install dependencies
+      run: cd messaging-service && npm install # Change to your package manager (e.g., yarn)
+
+    - name: Build
+      run: cd messaging-service && npm run build # Change to your build command
+    
+    - name: 'Google auth'
+      id: 'auth'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        workload_identity_provider: "https://iam.googleapis.com/projects/241792550769/locations/global/workloadIdentityPools/polysnap/providers/github"
+        service_account: "cloud-398911@appspot.iam.gserviceaccount.com"
+
+ 
+      
+    - name: Deploy to App Engine (from messaging-service)
+      id: "deploy"
+      uses: "google-github-actions/deploy-appengine@v0"
+      with:
+        project_id: "cloud-398911"
+        deliverables: './messaging-service/app.yaml'

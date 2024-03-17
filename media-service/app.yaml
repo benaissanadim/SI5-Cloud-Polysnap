@@ -1,0 +1,4 @@
+runtime: nodejs18
+service: media-service
+includes:
+  - credentials.yaml
